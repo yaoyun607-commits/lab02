@@ -427,7 +427,38 @@ count(sort=TRUE)</code></pre>
 </div>
 <div id="ex-2." class="section level3">
 <h3>Ex 2.</h3>
-<pre class="r"><code># Write your code here to answer exercise 2</code></pre>
+<pre class="r"><code>plastic_data_all&lt;-plastic_data_all%&gt;%
+mutate(total_mismanage_plastic=mismanaged_plastic*population)
+plastic_data_all%&gt;%
+group_by(region)%&gt;%
+summarise(mean(total_mismanage_plastic))</code></pre>
+<pre><code>## # A tibble: 6 × 2
+##   region                          `mean(total_mismanage_plastic)`
+##   &lt;chr&gt;                                                     &lt;dbl&gt;
+## 1 Africa                                                  320729.
+## 2 Asia                                                   1026059.
+## 3 Europe                                                   38180.
+## 4 Latin America and The Caribbean                         193450.
+## 5 North America                                           147190.
+## 6 Oceania                                                  14577.</code></pre>
+<pre class="r"><code>plastic_data_all%&gt;%
+arrange(total_mismanage_plastic)</code></pre>
+<pre><code>## # A tibble: 159 × 7
+##    code  region       population mismanaged_plastic_o…¹ name  mismanaged_plastic
+##    &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;                  &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
+##  1 SOM   Africa          15690.                  0      Soma…             0     
+##  2 MCO   Europe             37.0                 0      Mona…             0.128 
+##  3 MHL   Oceania            45.4                 0      Mars…             0.271 
+##  4 MNE   Europe            631.                  0      Mont…             0.0255
+##  5 SYC   Africa            104.                  0      Seyc…             0.337 
+##  6 MDV   Asia              498.                  0      Mald…             0.113 
+##  7 KIR   Oceania           123.                  0      Kiri…             0.627 
+##  8 KNA   Latin Ameri…       47.7                 0.0189 Sain…             1.83  
+##  9 PLW   Oceania            17.9                 0.389  Palau             6.44  
+## 10 GUF   Latin Ameri…      280.                  0.0241 Fren…             0.433 
+## # ℹ 149 more rows
+## # ℹ abbreviated name: ¹​mismanaged_plastic_ocean
+## # ℹ 1 more variable: total_mismanage_plastic &lt;dbl&gt;</code></pre>
 </div>
 <div id="ex-3." class="section level3">
 <h3>Ex 3.</h3>
