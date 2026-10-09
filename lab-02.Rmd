@@ -34,8 +34,10 @@ plastic_data_all <- data3 %>%
 
 
 # Member 3 (pair 2) write code to load File 4 data here:
-
-
+data4 <- read_excel("data/UN_country_region.xlsx")
+plastic_data_all <- data4 %>%
+  select(-name) %>%
+  right_join(plastic_data_all, by = "code")
 
 ```
 
